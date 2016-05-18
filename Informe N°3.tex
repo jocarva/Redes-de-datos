@@ -1,0 +1,134 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\graphicspath{ {images/} }
+\begin{document}
+\begin{figure}
+\centering
+\includegraphics[scale=0.9]{eit.png}
+\end{figure}
+\begin{center}
+{\large \rm \textbf {Informe final laboratorio N3} \linebreak}
+\baselineskip 40pt
+{\LARGE \bfseries Creación de paquetes }
+\end{center}
+\vspace*{2cm}
+\textbf{Integrantes:}
+\begin{itemize}
+\item José Carvajal
+\item Agustin Moore
+\item Diego Torreblanca
+\item Enzo Urrutia
+\end{itemize}
+\baselineskip 20pt
+\textbf{Profesor:}
+\begin{itemize}
+\item Jaime Álvarez
+\end{itemize}
+\baselineskip 20pt
+\textbf{Ayudante:}
+\begin{itemize}
+\item Alexis Inzunza
+\end{itemize}
+\vspace*{0.5cm}
+\begin{flushleft}
+Fecha: 13 de Abril del 2016\\
+Santiago
+\end{flushleft}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   INDICE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{center}
+{\LARGE \bfseries Indice}
+\end{center}
+\vspace*{0.5cm}
+\begin{itemize}
+\item \textbf{Pasos previos al envío de paquetes}.................................... Página 3\\
+\item \textbf{Caso 1: Envío a FF:FF:FF:FF:FF:FF}............................... Página 4\\
+\item \textbf{Caso 2: Envío a MAC de otro equipo}.............................. Página 5 \\
+\item \textbf{Caso 3: Envío a MAC de ningun equipo de la red}......... Página 6 \\
+\item \textbf{Conclusión}............................................................................... Página 7\\
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   INTRODUCCION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{center}
+{\LARGE \bfseries Pasos previos al envío de paquetes }
+\end{center}
+Antes de definir el punto al cual deseamos enviar nuestro paquete de datos, debemos realizar
+pasos para poder apuntar al punto donde queremos. Para esto, utilizamos la herramienta Scapy, 
+la cual empleamos desde la consola del terminal. Este programa nos permite manipular los paquetes de datos, primero creándolos, para luego enviar en o las direcciones que se desee.
+\begin{itemize}
+\item \textbf{Primeras instrucciones dentro de Scapy}
+\end{itemize}
+\includegraphics[scale=0.4]{primera.png}
+\begin{itemize}
+\item \textbf{Información de la red, según la dirección elegida (Ejemplo)}
+\end{itemize}
+\includegraphics[scale=0.4]{Segunda.png}
+\\
+Los pasos mencionados anteriormente, solo fueron los que debimos realizar antes de establecer el punto donde se querían enviar él, o los paquetes de datos. A continuación, los casos según los puntos de envío elegidos.  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   CASO 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{center}
+{\LARGE \bfseries Caso 1: Envío a FF:FF:FF:FF:FF:FF}
+\end{center}
+El primer caso en este analisis, es en cual se busca enviar con una dirección "FF", desde este punto es que surgen las interrogantes respecto a lo que sucede bajo estas circunstancias.\\
+Para poder obtener los datos estudiados en este caso, debimos apuntar en la dirección a la cual se deseaba enviar, como lo muestra la siguiente imagen. En este paso, es donde debiamos seleccionar el punto a donde enviar el paquete de datos, en este caso, fue hacia una dirección FF:FF:FF:FF:FF:FF.
+\\
+\includegraphics[scale=0.4]{caso_1.png}
+
+
+\textbf{¿Qué pasa cuando envió un paquete a la dirección FF:FF:FF:FF:FF:FF? ¿Quienes
+lo reciben? ¿Por qué?}
+
+Cuando se envia un paquete a la direccion  FF:FF:FF:FF:FF:FF, la cual correspnde a una dirección broadcast, por lo cual todos los dispositivos reciben el paquete de datos en el caso de que sea un hub, ya que estos hacen pasar los paquetes por toda la red. En el caso de un switch no ocurriría esto, ya que solo se puede enviar a direcciones concretas. \\
+La siguiente imagen, demuestra como uno de los equipos conectados a esta red, recibe el paquete de datos enviado, sin que haya sido el, quien debería recibirlo unicamente.
+
+\includegraphics[scale=0.4]{caso_1_WS.png}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   CASO 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{center}
+{\LARGE \bfseries Caso 2: Envío a MAC de otro equipo }
+\end{center}
+Este es el caso, en el cual, al momento de enviar el paquete de datos, se hace en una dirección determinada, a un equipo en particular. El siguiente ejemplo es el que demuestra que paso con este caso, a la hora de realizar el ejercicio. En la siguiente imagen, nosotros apuntamos auna direccion en concreto, a un dispositivo determinado.\\
+\includegraphics[scale=1]{caso_2_ip.png}
+\\ 
+\includegraphics[scale=1]{caso_2_paquete.png}
+\\
+\textbf{¿Qué pasa cuando envió un paquete a una MAC de otro equipo? ¿Quienes lo
+pueden reciben? ¿Por qué?}
+Para este caso lo recibe solo el equipo que cuente la mac ingresada ya que no pueden haber dos mac iguales, porque esta es el sello del hardware y no de la maquina virtual. \\
+
+\includegraphics[scale=1]{caso_2_paquete.png}
+\\ 
+Como se puede apreciar en la siguiente imagen, el equipo al cual se le enviaba la información, lo recibe clara y unicamente. \\
+
+\includegraphics[scale=0.4]{caso_2_WS.png}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   CASO 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{center}
+{\LARGE \bfseries Caso 3: Envío a MAC de ningún equipo de la red }
+\end{center}
+\textbf{¿Qué sucede si envía un paquete a una MAC que no corresponda a ningún equipo
+de la red? ¿Quienes lo pueden recepcionar? ¿Por qué?}
+
+En una red que cuente con un hub todos los equipos los recepcionarian ya que en este todos los paquetes pasan por el circuito de equipos entero de la red pero ni uno podria recibirlo ya que no se podria autentificar la mac, en un switch no se enviaria a nadie y no podria ser recepcionado por nadie ya que no encontraria una ruta a esta direccion erronea.\\
+\\
+\includegraphics[scale=0.6]{caso_3.png}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   CONCLUSION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{center}
+{\LARGE \bfseries Conclusión }
+\end{center}
+Durante la realización de este laboratorio, descubrimos los distintos casos que pueden ocurrir ante el envío de datos, y como puede variar el transporte de estos, según el dispositivo que este instalado en la red, ya sea el switch o hub. \\
+
+El emplear los programas utilizados durante el laboratorio, nos ayuda a poder descubrir como es la interacción entre los dispositivos conectados a la misma red, ya que en estos software quedaba explicita dicha acción. \\
+
+Como resultado de todo este laboratorio, podemos concluir, en la importancia que tiene el mecanismo que se instala para la distribución de datos, porque cada uno interactúa de diferente forma con los dispositivos conectados a la red. En el caso del switch, este envía según la dirección señalada, a diferencia del hub, el cual manda el paquete de datos y es recibido por el que presenta la dirección señalada.\\
+
+
+\end{document}
